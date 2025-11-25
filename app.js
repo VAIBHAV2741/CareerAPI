@@ -36,4 +36,8 @@ app.use("/api/v1/application", applicationRouter);
 dbConnection();
 
 app.use(errorMiddleware);
+// Health check endpoint for deployment platforms (like Render)
+app.get('/', (req, res) => {
+  res.status(200).json({ message: 'API is working' });
+});
 export default app;
